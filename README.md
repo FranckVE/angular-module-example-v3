@@ -110,15 +110,15 @@ Now it is time to modify the standard code and add the necessary files to turn t
 
 #### add `index.ts` in the main module folder
 
-In `src/app/` : add a file called `index.ts`
+In `src/app/` (next to `app.module.ts`) : add a file called `index.ts`
 
 #### in `index.ts` just export the exposed modules
 
 In `src/app/index.ts` :
 
 ```javascript
-export * from './banana-orange/banana-orange.module';
-export * from './cherry-chocolate/cherry-chocolate.module';
+export * from './square-oak/square-oak.module';
+export * from './triangle-steel/triangle-steel.module';
 ```
 
 ### change the module set version in the main `package.json`
@@ -127,19 +127,9 @@ E.g. change `"version": "0.0.0",` to :
 
 ```json
 {
-  "name": "angular-module-example-v3",
-  "version": "0.0.1",
+  "name": "angular-module-example-v1234",
+  "version": "0.1.0",
   "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
-...
-}
 ```
 
 **NB :** beware the version setting rule should follow semantic versioning (see http://semver.org)

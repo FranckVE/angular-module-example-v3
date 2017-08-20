@@ -6,6 +6,9 @@ import { TriangleSteelComponent } from './triangle-steel.component';
   imports: [
     CommonModule
   ],
+  exports: [
+    TriangleSteelComponent
+  ],
   declarations: [TriangleSteelComponent]
 })
 export class TriangleSteelModule { }

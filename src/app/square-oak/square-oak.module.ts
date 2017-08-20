@@ -6,6 +6,9 @@ import { SquareOakComponent } from './square-oak.component';
   imports: [
     CommonModule
   ],
+  exports: [
+    SquareOakComponent
+  ],
   declarations: [SquareOakComponent]
 })
 export class SquareOakModule { }
