@@ -106,13 +106,13 @@ The only thing we have made sure is to create modules along with components.
 
 Now it is time to modify the standard code and add the necessary files to turn this standard project into an Angular NPM module project.
 
-### add `index.ts` and export exposed modules
+### Add `index.ts` and export exposed modules
 
-#### add `index.ts` in the main module folder
+#### Add `index.ts` in the main module folder
 
 In `src/app/` (next to `app.module.ts`) : add a file called `index.ts`
 
-#### in `index.ts` just export the exposed modules
+#### In `index.ts` just export the exposed modules
 
 In `src/app/index.ts` :
 
@@ -121,7 +121,7 @@ export * from './square-oak/square-oak.module';
 export * from './triangle-steel/triangle-steel.module';
 ```
 
-### change the module set version in the main `package.json`
+### Change the module set version in the main `package.json`
 
 E.g. change `"version": "0.0.0",` to :
 
@@ -219,7 +219,78 @@ import { TriangleSteelComponent } from './triangle-steel.component';
 export class TriangleSteelModule { }
 ```
 
+## Using the newly available Module project in another Angular project
 
+### Add the module `angular-module-example-v1234` in your other project
+
+```bash
+yarn add https://github.com/FranckVE/angular-module-example-v1234
+``` 
+
+You find the new item in your project's `package.json` :
+
+```json
+{
+  "name": "graph-editor-v1",
+  "version": "0.0.0",
+  "license": "MIT",
+
+
+  "dependencies": {
+    "@angular/animations": "^4.3.4",
+    "@angular/cdk": "^2.0.0-beta.8",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+
+
+    "angular-module-example-v1234": "https://github.com/FranckVE/angular-module-example-v1234",
+
+
+  },
+
+
+}
+```
+
+### Import the module in your project's `.module.ts` needing it
+
+E.g. in `my-view.module.ts`
+
+```javascript
+...
+import { SquareOakModule, TriangleSteelModule } from 'angular-module-example-v1234/src/app';
+...
+@NgModule({
+  ...
+  imports: [
+    ...
+    SquareOakModule,
+    TriangleSteelModule,
+  ],
+  ...
+})
+export class MyViewModule { }
+```
+
+### Use the exposed component in your `.html`
+
+In `my-view.component.html` :
+
+```html
+<app-square-oak></app-square-oak>
+<app-triangle-steel></app-triangle-steel>
+```
+
+
+### Updating the module `angular-module-example-v1234` in your other project
+
+```bash
+yarn upgrade https://github.com/FranckVE/angular-module-example-v1234
+``` 
+
+**NB :** The module will update even if its version remains unchanged on the remote GitHub repository.
+Changing the `package.json` is strongly recommended, as a best practice, regardless you are in development mode.
 
 
 
